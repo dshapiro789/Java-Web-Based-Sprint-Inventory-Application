@@ -39,6 +39,44 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        // Checks if there are no parts in the repository before adding new ones
+        if (partRepository.count() == 0) {
+            // Adding specific parts, price and inventory
+            Part graphicsCard = new Part("Graphics Card", 750, 100);
+            partRepository.save(graphicsCard);
+
+            Part ram = new Part("RAM", 200, 100);
+            partRepository.save(ram);
+
+            Part motherboard = new Part("Motherboard", 900, 100);
+            partRepository.save(motherboard);
+
+            Part keyboard = new Part("Keyboard", 75, 200);
+            partRepository.save(keyboard);
+
+            Part mouse = new Part("Mouse", 60, 200);
+            partRepository.save(mouse);
+        }
+
+        // Checks if there are no products in the repository before adding new ones
+        if (productRepository.count() == 0) {
+            // Adding specific products, price and inventory
+            Product appleComputer = new Product("Apple Computer", 2000, 100);
+            productRepository.save(appleComputer);
+
+            Product windowsComputer = new Product("Windows Computer", 1500, 100);
+            productRepository.save(windowsComputer);
+
+            Product linuxComputer = new Product("Linux Computer", 2500, 100);
+            productRepository.save(linuxComputer);
+
+            Product ubuntuComputer = new Product("Ubuntu Computer", 2500, 100);
+            productRepository.save(ubuntuComputer);
+
+            Product chromebookComputer = new Product("Chromebook Computer", 1000, 100);
+            productRepository.save(chromebookComputer);
+        }
+
        /*
         OutsourcedPart o= new OutsourcedPart();
         o.setCompanyName("Western Governors University");

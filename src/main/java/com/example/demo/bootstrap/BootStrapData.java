@@ -85,16 +85,18 @@ public class BootStrapData implements CommandLineRunner {
         }
 
 
-        Product appleComputer = new Product("Apple Computer",2000.0,5);
-        Product windowsComputer = new Product("Windows Computer",1500.0,5);
-        Product linuxComputer = new Product("Linux Computer",2500.0,5);
-        Product ubuntuComputer = new Product("Ubuntu Computer",2500.0,5);
-        Product chromebookComputer = new Product("Chromebook Computer",1000.0,5);
-        productRepository.save(appleComputer);
-        productRepository.save(windowsComputer);
-        productRepository.save(linuxComputer);
-        productRepository.save(ubuntuComputer);
-        productRepository.save(chromebookComputer);
+        if (productRepository.count() == 0) {
+            Product appleComputer = new Product("Apple Computer", 2000.0, 5);
+            Product windowsComputer = new Product("Windows Computer", 1500.0, 5);
+            Product linuxComputer = new Product("Linux Computer", 2500.0, 5);
+            Product ubuntuComputer = new Product("Ubuntu Computer", 2500.0, 5);
+            Product chromebookComputer = new Product("Chromebook Computer", 1000.0, 5);
+            productRepository.save(appleComputer);
+            productRepository.save(windowsComputer);
+            productRepository.save(linuxComputer);
+            productRepository.save(ubuntuComputer);
+            productRepository.save(chromebookComputer);
+        }
 
 
         System.out.println("Started in Bootstrap");

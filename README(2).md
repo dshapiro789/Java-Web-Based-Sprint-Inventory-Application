@@ -39,7 +39,7 @@ ______________________________________________
 E.  Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
 
 - BootStrapData.java [Lines 42-109]: Added 5 Parts, 5 Products (+ Price/Inventory)
-
+- BootStrapData.java [Lines 42-80 + 88-99]: Amended code to troubleshoot
 
 ______________________________________________
 

@@ -29,9 +29,8 @@ ______________________________________________
 D.  Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
 
 - About.html: Creates new "About.html" page + [Line 18] adds brief company description
-
 - mainscreen.html [Lines 20-22]: Adds navigation to About.html page.
-
+- MainScreenControllerr.java [Lines 56-59]: Adds new method to handle requests to the "/about" endpoint
 
 ______________________________________________
 

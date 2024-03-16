@@ -52,4 +52,9 @@ public class MainScreenControllerr {
         theModel.addAttribute("productkeyword",productkeyword);
         return "mainscreen";
     }
+
+    @GetMapping("/About")
+    public String About() {
+        return "About";
+    }
 }

@@ -28,8 +28,12 @@ ______________________________________________
 
 D.  Add an “About” page to the application to describe your chosen customer’s company to web viewers and include navigation to and from the “About” page and the main screen.
 
+- About.html: Creates new "About.html" page + [Line 25] adds brief company description
+- mainscreen.html [Lines 20-22]: Adds navigation to About.html page.
+- MainScreenControllerr.java [Lines 56-59]: Adds new method to handle requests to the "/about" endpoint
+- About.html [Line 18-24]: Adds navigation link back to mainscreen.html
 
-
+______________________________________________
 
 
 E.  Add a sample inventory appropriate for your chosen store to the application. You should have five parts and five products in your sample inventory and should not overwrite existing data in the database.
@@ -37,6 +41,7 @@ E.  Add a sample inventory appropriate for your chosen store to the application.
 
 
 
+______________________________________________
 
 F.  Add a “Buy Now” button to your product list. Your “Buy Now” button must meet each of the following parameters:
 •  The “Buy Now” button must be next to the buttons that update and delete products.
@@ -46,7 +51,7 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 
 
 
-
+______________________________________________
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:
 •  Add additional fields to the part entity for maximum and minimum inventory.
@@ -59,6 +64,7 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 
 
 
+______________________________________________
 
 H.  Add validation for between or at the maximum and minimum fields. The validation must include the following:
 •  Display error messages for low inventory when adding and updating parts if the inventory is less than the minimum number of parts.
@@ -69,6 +75,7 @@ H.  Add validation for between or at the maximum and minimum fields. The validat
 
 
 
+______________________________________________
 
 I.  Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
 
@@ -76,5 +83,6 @@ I.  Add at least two unit tests for the maximum and minimum fields to the PartTe
 
 
 
+______________________________________________
 
 J.  Remove the class files for any unused validators in order to clean your code.

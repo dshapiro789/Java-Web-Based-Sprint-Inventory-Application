@@ -41,58 +41,75 @@ public class BootStrapData implements CommandLineRunner {
 
         // Checks if there are no parts in the repository before adding new ones
         if (partRepository.count() == 0) {
-            // Adding specific parts, price and inventory
-            Part graphicsCard = new Part("Graphics Card", 750, 100);
-            partRepository.save(graphicsCard);
 
-            Part ram = new Part("RAM", 200, 100);
-            partRepository.save(ram);
+            OutsourcedPart o = new OutsourcedPart();
+            o.setCompanyName("Dave's Discount Computer Parts");
+            o.setName("Apple Computer");
+            o.setInv(5);
+            o.setPrice(200.0);
+            o.setId(100L);
+            outsourcedPartRepository.save(o);
+            OutsourcedPart thePart = null;
+            List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
+            for (OutsourcedPart part : outsourcedParts) {
+                if (part.getName().equals("Apple Computer")) thePart = part;
+            }
 
-            Part motherboard = new Part("Motherboard", 900, 100);
-            partRepository.save(motherboard);
+            OutsourcedPart o2 = new OutsourcedPart();
+            o2.setCompanyName("Dave's Discount Computer Parts");
+            o2.setName("Windows Computer");
+            o2.setInv(5);
+            o2.setPrice(200.0);
+            o2.setId(100L);
+            outsourcedPartRepository.save(o2);
+            OutsourcedPart thePart = null;
+            List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
+            for (OutsourcedPart part : outsourcedParts) {
+                if (part.getName().equals("Windows Computer")) thePart = part;
+            }
 
-            Part keyboard = new Part("Keyboard", 75, 200);
-            partRepository.save(keyboard);
+            OutsourcedPart o3 = new OutsourcedPart();
+            o3.setCompanyName("Dave's Discount Computer Parts");
+            o3.setName("Linux Computer");
+            o3.setInv(5);
+            o3.setPrice(250.0);
+            o3.setId(100L);
+            outsourcedPartRepository.save(o3);
+            OutsourcedPart thePart = null;
+            List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
+            for (OutsourcedPart part : outsourcedParts) {
+                if (part.getName().equals("Linux Computer")) thePart = part;
+            }
 
-            Part mouse = new Part("Mouse", 60, 200);
-            partRepository.save(mouse);
-        }
+            OutsourcedPart o4 = new OutsourcedPart();
+            o4.setCompanyName("Dave's Discount Computer Parts");
+            o4.setName("Ubuntu Computer");
+            o4.setInv(5);
+            o4.setPrice(250.0);
+            o4.setId(100L);
+            outsourcedPartRepository.save(o4);
+            OutsourcedPart thePart = null;
+            List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
+            for (OutsourcedPart part : outsourcedParts) {
+                if (part.getName().equals("Ubuntu Computer")) thePart = part;
+            }
 
-        // Checks if there are no products in the repository before adding new ones
-        if (productRepository.count() == 0) {
-            // Adding specific products, price and inventory
-            Product appleComputer = new Product("Apple Computer", 2000, 100);
-            productRepository.save(appleComputer);
-
-            Product windowsComputer = new Product("Windows Computer", 1500, 100);
-            productRepository.save(windowsComputer);
-
-            Product linuxComputer = new Product("Linux Computer", 2500, 100);
-            productRepository.save(linuxComputer);
-
-            Product ubuntuComputer = new Product("Ubuntu Computer", 2500, 100);
-            productRepository.save(ubuntuComputer);
-
-            Product chromebookComputer = new Product("Chromebook Computer", 1000, 100);
-            productRepository.save(chromebookComputer);
-        }
-
-       /*
-        OutsourcedPart o= new OutsourcedPart();
-        o.setCompanyName("Western Governors University");
-        o.setName("out test");
-        o.setInv(5);
-        o.setPrice(20.0);
-        o.setId(100L);
-        outsourcedPartRepository.save(o);
-        OutsourcedPart thePart=null;
-        List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();
-        for(OutsourcedPart part:outsourcedParts){
-            if(part.getName().equals("out test"))thePart=part;
+            OutsourcedPart o5 = new OutsourcedPart();
+            o5.setCompanyName("Dave's Discount Computer Parts");
+            o5.setName("Chromebook Computer");
+            o5.setInv(5);
+            o5.setPrice(100.0);
+            o5.setId(100L);
+            outsourcedPartRepository.save(o5);
+            OutsourcedPart thePart = null;
+            List<OutsourcedPart> outsourcedParts = (List<OutsourcedPart>) outsourcedPartRepository.findAll();
+            for (OutsourcedPart part : outsourcedParts) {
+                if (part.getName().equals("Chromebook Computer")) thePart = part;
+            }
         }
 
         System.out.println(thePart.getCompanyName());
-        */
+
         List<OutsourcedPart> outsourcedParts=(List<OutsourcedPart>) outsourcedPartRepository.findAll();
         for(OutsourcedPart part:outsourcedParts){
             System.out.println(part.getName()+" "+part.getCompanyName());

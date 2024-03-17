@@ -68,7 +68,6 @@ public class BootStrapData implements CommandLineRunner {
             o4.setName("Keyboard");
             o4.setInv(5);
             o4.setPrice(75);
-            o4.setId(100L);
             outsourcedPartRepository.save(o4);
 
             OutsourcedPart o5 = new OutsourcedPart();

@@ -48,7 +48,7 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 •  The button should decrement the inventory of that product by one. It should not affect the inventory of any of the associated parts.
 •  Display a message that indicates the success or failure of a purchase.
 
-
+- mainscreen.html [Lines 88-91] - Adds 'Buy Now' button form
 
 
 ______________________________________________

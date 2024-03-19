@@ -49,8 +49,8 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 •  Display a message that indicates the success or failure of a purchase.
 
 - mainscreen.html [Lines 88-91] - Adds 'Buy Now' button form
-
-
+- purchaseSuccessful.html - Created new HTML page
+- purchaseError.html - Created new HTML page
 ______________________________________________
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:

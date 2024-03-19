@@ -52,6 +52,7 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 - purchaseSuccessful.html - Created new HTML page
 - purchaseError.html - Created new HTML page
 - ProductService.java [Line 21] - adds method signature for decrementing inventory
+- ProductServiceImpl.java [Lines 70-84] - adds new decrementInventory method
 ______________________________________________
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:

@@ -18,4 +18,5 @@ public interface ProductService {
     public void deleteById(int theId);
     public List<Product> listAll(String keyword);
 
+    boolean decrementInventory(Long productId); // adds method signature for decrementing inventory.
 }

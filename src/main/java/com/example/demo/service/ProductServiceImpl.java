@@ -21,7 +21,6 @@ public class ProductServiceImpl implements ProductService{
     private ProductRepository productRepository;
 
     @Autowired
-
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -65,5 +64,21 @@ public class ProductServiceImpl implements ProductService{
             return productRepository.search(keyword);
         }
         return (List<Product>) productRepository.findAll();
+    }
+
+
+    // Adds new decrementInventory method
+    @Override
+    public boolean decrementInventory(Long productId) {
+        Optional<Product> result = productRepository.findById(productId);
+        if (result.isPresent()) {
+            Product theProduct = result.get();
+            if (theProduct.getInv() > 0) {
+                theProduct.setInv(theProduct.getInv() - 1);
+                productRepository.save(theProduct);
+                return true; // Inventory decremented successfully
+            }
+        }
+        return false; // If product is not found or inventory is 0
     }
 }

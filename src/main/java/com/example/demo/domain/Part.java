@@ -43,11 +43,13 @@ public abstract class Part implements Serializable {
     Set<Product> products= new HashSet<>();
 
     public Part(int minInv, int maxInv) {
-        this.minInv = 0; // Initializes new minInv field
-        this.maxInv = 10000; // Initializes new maxInv field
+        this.minInv = minInv; // Initializes new minInv field
+        this.maxInv = minInv; // Initializes new maxInv field
     }
 
     protected Part() {
+        this.minInv = 0;  // Adds default value
+        this.maxInv = 10000; // Adds default value
     }
 
     public Part(String name, double price, int inv, int minInv, int maxInv) {

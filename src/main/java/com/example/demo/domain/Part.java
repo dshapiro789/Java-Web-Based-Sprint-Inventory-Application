@@ -30,6 +30,12 @@ public abstract class Part implements Serializable {
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
 
+    // Created new min and max inventory fields
+    @Min(value = 0, message = "Minimum inventory must not be less than 0")
+    private int minInv;
+
+    @Min(value = 0, message = "Maximum inventory must not be less than 0")
+    private int maxInv;
 
     @ManyToMany
     @JoinTable(name="product_part", joinColumns = @JoinColumn(name="part_id"),

@@ -15,7 +15,7 @@ public class OutsourcedPart extends Part{
 String companyName;
 
     public OutsourcedPart() {
-        super(); // Calls the protected no-argument constructor of Part
+        super(); // Calls protected no-argument constructor of Part
     }
 
     // Calls another constructor of Part

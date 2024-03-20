@@ -44,7 +44,7 @@ public abstract class Part implements Serializable {
 
     public Part(int minInv, int maxInv) {
         this.minInv = minInv; // Initializes new minInv field
-        this.maxInv = minInv; // Initializes new maxInv field
+        this.maxInv = maxInv; // Initializes new maxInv field
     }
 
     protected Part() {

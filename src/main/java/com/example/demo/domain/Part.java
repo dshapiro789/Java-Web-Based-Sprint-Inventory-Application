@@ -42,7 +42,9 @@ public abstract class Part implements Serializable {
             inverseJoinColumns=@JoinColumn(name="product_id"))
     Set<Product> products= new HashSet<>();
 
-    public Part() {
+    public Part(int minInv, int maxInv) {
+        this.minInv = minInv; // Initializes new minInv field
+        this.maxInv = maxInv; // Initializes new maxInv field
     }
 
     public Part(String name, double price, int inv) {

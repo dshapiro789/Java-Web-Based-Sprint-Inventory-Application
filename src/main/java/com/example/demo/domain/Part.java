@@ -34,7 +34,7 @@ public abstract class Part implements Serializable {
     @Min(value = 0, message = "The minimum inventory cannot be below 0")
     int minInv;
 
-    @Max(value = 10000, message = "The maximum inventory must be less than 10000")
+    @Max(value = 10000, message = "The maximum inventory must be less than 10001")
     int maxInv;
 
     @ManyToMany

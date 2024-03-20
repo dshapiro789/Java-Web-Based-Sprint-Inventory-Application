@@ -63,10 +63,24 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 •  Rename the file the persistent storage is saved to.
 •  Modify the code to enforce that the inventory is between or at the minimum and maximum value.
 
-
-
-
-
+- Part.java [Line 7] - adds the import for (Max) validation constraints
+- Part.java [Lines 33-38] - creates new min and max inventory fields
+- Part.java [Lines 46-47] - initializes new min/maxInv fields
+- Part.java [Lines 63-78] - creates getters and setters for minInv and maxInv
+- Part.java [Lines 34 + 37] - amended new min/max inventory fields
+- BootStrapData.java [Lines 107-117] - sets minimum and maximum inventory levels
+- BootStrapData.java [Lines 107] - removed new min/max inventory fields and moved to respective run method [Lines 50-51, 59-60, 68-69, 77-78, 86-87]
+- InhousePartForm.html [Lines 24-26] - adds new minimum and maximum inventory inputs
+- OutsourcedPartForm.html [Lines 25-27] - adds new minimum and maximum inventory inputs
+- spring-boot-h2-db102.mv.db - Renamed file to "spring-boot-newdb.mv.db"
+- application.properties [Line 6] - Renamed file path to "spring-boot-newdb.mv.db"
+- Part.java [Line 37] - amended max inventory field (changed 10000 to 10001)
+- Part.java [Lines 120-123] - adds new isInventoryValid method
+- AddInhousePartController.java [Lines 45-49] - adds validation for the inventory level
+- AddOutsourcedPartController.java [Lines 47-51] - adds validation for the inventory level
+- OutsourcedPart.java [Line 18 + 21-25] - Calls constructors of Part 
+- InhousePart.java [Line 18 + 21-25] - Calls constructors of Part + Initializes all fields, including inherited ones
+- Part.java [Lines 46-47, 50, 54-55, 58, 63-64] - amended min/maxInv fields + added min/maxInv parameters
 ______________________________________________
 
 H.  Add validation for between or at the maximum and minimum fields. The validation must include the following:

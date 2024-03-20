@@ -47,6 +47,9 @@ public abstract class Part implements Serializable {
         this.maxInv = 10000; // Initializes new maxInv field
     }
 
+    protected Part() {
+    }
+
     public Part(String name, double price, int inv, int minInv, int maxInv) {
         this.name = name;
         this.price = price;

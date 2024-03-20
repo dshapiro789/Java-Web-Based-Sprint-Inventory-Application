@@ -69,6 +69,14 @@ public class AddProductController {
             theModel.addAttribute("assparts",product2.getParts());
             return "productForm";
         }
+
+        // Validates the inventory
+        if(product.getInv() > 10000) {
+            bindingResult.rejectValue("inv", "error.inv", "Inventory must not exceed 10000 units.");
+            return "productForm";
+        }
+
+
  //       theModel.addAttribute("assparts", assparts);
  //       this.product=product;
 //        product.getParts().addAll(assparts);

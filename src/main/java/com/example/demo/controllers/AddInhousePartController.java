@@ -43,6 +43,8 @@ public class AddInhousePartController{
             return "InhousePartForm";
         }
         else if (!part.isInventoryValid()) {
+            // Logs the invalid inventory case
+            System.out.println("Inventory is not valid. Inventory: " + part.getInv() + ", Min: " + part.getMinInv() + ", Max: " + part.getMaxInv());
             // Adds validation for the inventory level
             theBindingResult.rejectValue("inv", "error.inv", "Inventory must be between the minimum and maximum values.");
             return "InhousePartForm";

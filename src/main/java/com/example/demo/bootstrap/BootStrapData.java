@@ -104,5 +104,17 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("Number of Parts"+partRepository.count());
         System.out.println(partRepository.findAll());
 
+        // Sets minimum and maximum inventory levels
+        o1.setMinInv(0);
+        o1.setMaxInv(10000);
+        o2.setMinInv(0);
+        o2.setMaxInv(10000);
+        o3.setMinInv(0);
+        o3.setMaxInv(10000);
+        o4.setMinInv(0);
+        o4.setMaxInv(10000);
+        o5.setMinInv(0);
+        o5.setMaxInv(10000);
+
     }
 }

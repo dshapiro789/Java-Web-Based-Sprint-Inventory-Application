@@ -47,6 +47,8 @@ public class BootStrapData implements CommandLineRunner {
             o1.setName("RAM (16 GB)");
             o1.setInv(5);
             o1.setPrice(200);
+            o1.setMinInv(0); // Sets minimum and maximum inventory levels
+            o1.setMaxInv(10000);
             outsourcedPartRepository.save(o1);
 
             OutsourcedPart o2 = new OutsourcedPart();
@@ -54,6 +56,8 @@ public class BootStrapData implements CommandLineRunner {
             o2.setName("Graphics Card");
             o2.setInv(5);
             o2.setPrice(750);
+            o2.setMinInv(0); // Sets minimum and maximum inventory levels
+            o2.setMaxInv(10000);
             outsourcedPartRepository.save(o2);
 
             OutsourcedPart o3 = new OutsourcedPart();
@@ -61,6 +65,8 @@ public class BootStrapData implements CommandLineRunner {
             o3.setName("Motherboard");
             o3.setInv(5);
             o3.setPrice(900);
+            o3.setMinInv(0); // Sets minimum and maximum inventory levels
+            o3.setMaxInv(10000);
             outsourcedPartRepository.save(o3);
 
             OutsourcedPart o4 = new OutsourcedPart();
@@ -68,6 +74,8 @@ public class BootStrapData implements CommandLineRunner {
             o4.setName("Keyboard");
             o4.setInv(5);
             o4.setPrice(75);
+            o4.setMinInv(0); // Sets minimum and maximum inventory levels
+            o4.setMaxInv(10000);
             outsourcedPartRepository.save(o4);
 
             OutsourcedPart o5 = new OutsourcedPart();
@@ -75,6 +83,8 @@ public class BootStrapData implements CommandLineRunner {
             o5.setName("Mouse");
             o5.setInv(5);
             o5.setPrice(60);
+            o5.setMinInv(0); // Sets minimum and maximum inventory levels
+            o5.setMaxInv(10000);
             outsourcedPartRepository.save(o5);
         }
 
@@ -103,18 +113,6 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println(productRepository.findAll());
         System.out.println("Number of Parts"+partRepository.count());
         System.out.println(partRepository.findAll());
-
-        // Sets minimum and maximum inventory levels
-        o1.setMinInv(0);
-        o1.setMaxInv(10000);
-        o2.setMinInv(0);
-        o2.setMaxInv(10000);
-        o3.setMinInv(0);
-        o3.setMaxInv(10000);
-        o4.setMinInv(0);
-        o4.setMaxInv(10000);
-        o5.setMinInv(0);
-        o5.setMaxInv(10000);
 
     }
 }

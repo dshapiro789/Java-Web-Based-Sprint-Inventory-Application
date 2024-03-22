@@ -54,6 +54,7 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 - ProductService.java [Line 21] - adds method signature for decrementing inventory
 - ProductServiceImpl.java [Lines 70-84] - adds new decrementInventory method
 - MainScreenControllerr.java [Lines 32-36 + 58-68] - Amends existing controller method + Adds PostMapping for Buy Now button functionality
+
 ______________________________________________
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:
@@ -81,6 +82,7 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 - OutsourcedPart.java [Line 18 + 21-25] - Calls constructors of Part 
 - InhousePart.java [Line 18 + 21-25] - Calls constructors of Part + Initializes all fields, including inherited ones
 - Part.java [Lines 46-47, 50, 54-55, 58, 63-64] - amended min/maxInv fields + added min/maxInv parameters
+
 ______________________________________________
 
 H.  Add validation for between or at the maximum and minimum fields. The validation must include the following:
@@ -88,9 +90,11 @@ H.  Add validation for between or at the maximum and minimum fields. The validat
 •  Display error messages for low inventory when adding and updating products lowers the part inventory below the minimum.
 •  Display error messages when adding and updating parts if the inventory is greater than the maximum.
 
-
-
-
+- AddInhousePartController.java [Lines 46-56] - checks if inventory is less than or exceeds min/max constraints
+- AddOutsourcedPartController.java [Lines 47-57] - checks if inventory is less than or exceeds min/max constraints
+- EnufPartsValidator.java [Lines 36-44] - Determines the potential new inventory level for the part + Adds constraint violation
+- AddProductController.java [Lines 57-66] - modified Product2 assignment + try/catch statements
+- AddProductController.java [Lines 84-100] - adds logic for inventory "too low" management
 
 ______________________________________________
 

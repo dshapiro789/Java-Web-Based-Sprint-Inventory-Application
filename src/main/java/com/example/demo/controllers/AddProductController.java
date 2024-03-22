@@ -81,6 +81,24 @@ public class AddProductController {
             return "productForm";
         }
 
+        boolean inventoryTooLow = false;
+        ProductService productService = context.getBean(ProductServiceImpl.class);
+        if (product.getId() != 0) {
+            Product existingProduct = productService.findById((int) product.getId());
+            for (Part part : existingProduct.getParts()) {
+                int updatedInventory = part.getInv() - (product.getInv() - existingProduct.getInv());
+                if (updatedInventory < part.getMinInv()) {
+                    inventoryTooLow = true;
+                    break;
+                }
+            }
+        }
+
+        if (inventoryTooLow) {
+            bindingResult.rejectValue("inv", "error.product.inv", "Updating product inventory causes part inventory to fall below minimum.");
+            return "productForm";
+        }
+
 
  //       theModel.addAttribute("assparts", assparts);
  //       this.product=product;

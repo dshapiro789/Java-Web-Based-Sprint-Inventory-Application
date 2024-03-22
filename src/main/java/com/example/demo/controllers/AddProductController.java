@@ -54,16 +54,21 @@ public class AddProductController {
 
         if(bindingResult.hasErrors()){
             ProductService productService = context.getBean(ProductServiceImpl.class);
-            Product product2 = new Product();
+            Product product2 = null;
             try {
                 product2 = productService.findById((int) product.getId());
+                if (product2 == null) {
+                    product2 = new Product();
+                }
             } catch (Exception e) {
-                System.out.println("Error Message " + e.getMessage());
+                System.out.println("Error occurred while retrieving product: " + e.getMessage());
+                product2 = new Product();
             }
             theModel.addAttribute("parts", partService.findAll());
             List<Part>availParts=new ArrayList<>();
             for(Part p: partService.findAll()){
                 if(!product2.getParts().contains(p))availParts.add(p);
+
             }
             theModel.addAttribute("availparts",availParts);
             theModel.addAttribute("assparts",product2.getParts());

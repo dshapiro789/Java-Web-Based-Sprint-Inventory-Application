@@ -28,6 +28,7 @@ public class Product implements Serializable {
     double price;
     @Min(value = 0, message = "Inventory value must be positive")
     int inv;
+
     @ManyToMany(cascade=CascadeType.ALL, mappedBy = "products")
     Set<Part> parts= new HashSet<>();
 

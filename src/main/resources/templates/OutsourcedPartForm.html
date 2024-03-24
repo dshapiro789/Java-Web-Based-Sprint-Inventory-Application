@@ -9,17 +9,17 @@
 <body>
 <h1>Outsourced Part Detail</h1>
 
-<form action="#" th:action="@{/showFormAddOutPart}" th:object="${outsourcedpart}" method="POST"}>
+<form th:action="@{/showFormAddOutPart}" th:object="${outsourcedpart}" method="POST">
 
-<!-- Add hidden form field to handle update -->
-    <p><input type="hidden" th:field="*{id}"/></p>
+    <!-- Add hidden form field to handle update -->
+    <input type="hidden" th:field="*{id}"/>
 
-<p><input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
+    <p><input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4"/></p>
 
-<p><input type="text" th:field="*{price}" placeholder= "Price" class="form-control mb-4 col-4"/></p>
+    <p><input type="text" th:field="*{price}" placeholder="Price" class="form-control mb-4 col-4"/></p>
     <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</p>
 
-<p><input type="text" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
+    <p><input type="text" th:field="*{inv}" placeholder="Inventory" class="form-control mb-4 col-4"/></p>
     <p th:if="${#fields.hasErrors('inv')}" th:errors="*{inv}">Inventory Error</p>
 
     <!-- Adds new minimum and maximum inventory inputs -->
@@ -29,12 +29,11 @@
     <p><input type="number" th:field="*{maxInv}" placeholder="Maximum Inventory" class="form-control mb-4 col-4"/></p>
     <p th:if="${#fields.hasErrors('maxInv')}" th:errors="*{maxInv}">Maximum Inventory Error</p>
 
-
     <p><input type="text" th:field="*{companyName}" placeholder="Company Name" class="form-control mb-4 col-4"/></p>
 
-<p><input type="submit" value="Submit" /></p>
+    <input type="submit" value="Submit" />
 </form>
-<a href="http://localhost:8080/">Link
-    to Main Screen</a>
+
+<a href="http://localhost:8080/">Link to Main Screen</a>
 </body>
 </html>

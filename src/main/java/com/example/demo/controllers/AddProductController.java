@@ -50,79 +50,87 @@ public class AddProductController {
 
     @PostMapping("/showFormAddProduct")
     public String submitForm(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model theModel) {
-        theModel.addAttribute("product", product);
-
-        if(bindingResult.hasErrors()){
-            ProductService productService = context.getBean(ProductServiceImpl.class);
-            Product product2 = null;
-            try {
-                product2 = productService.findById((int) product.getId());
-                if (product2 == null) {
-                    product2 = new Product();
-                }
-            } catch (Exception e) {
-                System.out.println("Error occurred while retrieving product: " + e.getMessage());
-                product2 = new Product();
-            }
-            theModel.addAttribute("parts", partService.findAll());
-            List<Part>availParts=new ArrayList<>();
-            for(Part p: partService.findAll()){
-                if(!product2.getParts().contains(p))availParts.add(p);
-
-            }
-            theModel.addAttribute("availparts",availParts);
-            theModel.addAttribute("assparts",product2.getParts());
-            return "productForm";
-        }
-
-        // Validates the inventory
-        if(product.getInv() > 10000) {
-            bindingResult.rejectValue("inv", "error.inv", "Inventory must not exceed 10000 units.");
-            return "productForm";
-        }
-
-        boolean inventoryTooLow = false;
         ProductService productService = context.getBean(ProductServiceImpl.class);
-        if (product.getId() != 0) {
-            Product existingProduct = productService.findById((int) product.getId());
+        Product existingProduct = productService.findById((int) product.getId());
+
+        // Validate product inventory does not exceed max limit
+        if (product.getInv() > 10000) {
+            bindingResult.rejectValue("inv", "error.inv", "Inventory must not exceed 10000 units.");
+        }
+
+        // Validate that updating product inventory won't cause part inventory to fall below minimum
+        if (existingProduct != null) {
+            validatePartInventories(product, existingProduct, bindingResult);
+        }
+
+        // If there are errors after validations, return to the form with error messages
+        if (bindingResult.hasErrors()) {
+            setupModelForForm(theModel, partService, existingProduct);
+            return "productForm";
+        }
+
+        // Persist changes as the validations have passed
+        updateProductAndParts(product, existingProduct, productService);
+
+        return "confirmationaddproduct";
+    }
+
+    private void validatePartInventories(Product product, Product existingProduct, BindingResult bindingResult) {
+        if (existingProduct != null) {
             for (Part part : existingProduct.getParts()) {
                 int updatedInventory = part.getInv() - (product.getInv() - existingProduct.getInv());
                 if (updatedInventory < part.getMinInv()) {
-                    inventoryTooLow = true;
+                    String errorMessage = String.format(
+                            "Not enough inventory for part: %s. Minimum required is %d, but would be %d.",
+                            part.getName(), part.getMinInv(), updatedInventory
+                    );
+                    bindingResult.rejectValue("inv", "error.inv.low", errorMessage);
+                    // Break the loop since we found an error, no need to continue
                     break;
                 }
             }
         }
+    }
 
-        if (inventoryTooLow) {
-            bindingResult.rejectValue("inv", "error.product.inv", "Updating product inventory causes part inventory to fall below minimum.");
-            return "productForm";
+
+    private void setupModelForForm(Model theModel, PartService partService, Product existingProduct) {
+        theModel.addAttribute("product", existingProduct);
+        List<Part> availableParts = new ArrayList<>();
+        for (Part part : partService.findAll()) {
+            if (!existingProduct.getParts().contains(part)) {
+                availableParts.add(part);
+            }
         }
+        theModel.addAttribute("availparts", availableParts);
+        theModel.addAttribute("assparts", existingProduct.getParts());
+    }
 
-
- //       theModel.addAttribute("assparts", assparts);
- //       this.product=product;
-//        product.getParts().addAll(assparts);
-        else {
-            ProductService repo = context.getBean(ProductServiceImpl.class);
-            if(product.getId()!=0) {
-                Product product2 = repo.findById((int) product.getId());
+    private void updateProductAndParts(Product product, Product existingProduct, ProductService productService) {
+        if (existingProduct != null) {
+            int inventoryDifference = product.getInv() - existingProduct.getInv();
+            // Only update part inventories if there's an increase in product inventory
+            if (inventoryDifference > 0) {
                 PartService partService1 = context.getBean(PartServiceImpl.class);
-                if(product.getInv()- product2.getInv()>0) {
-                    for (Part p : product2.getParts()) {
-                        int inv = p.getInv();
-                        p.setInv(inv - (product.getInv() - product2.getInv()));
+                for (Part p : existingProduct.getParts()) {
+                    int inv = p.getInv();
+                    // Only reduce the part's inventory if the new inventory would not go below minimum
+                    int newInventory = inv - inventoryDifference;
+                    if (newInventory >= p.getMinInv()) {
+                        p.setInv(newInventory);
                         partService1.save(p);
+                    } else {
+                        // If it goes below the minimum, you should not proceed and handle this as an error
+                        // However, this should have been caught during the validation step.
+                        // Throw an exception or handle this case as needed.
                     }
                 }
             }
-            else{
-                product.setInv(0);
-            }
-            repo.save(product);
-            return "confirmationaddproduct";
+        } else {
+            product.setInv(0);
         }
+        productService.save(product);
     }
+
 
     @GetMapping("/showProductFormForUpdate")
     public String showProductFormForUpdate(@RequestParam("productID") int theId, Model theModel) {

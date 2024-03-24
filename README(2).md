@@ -89,6 +89,8 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 - productForm.html [Lines 78] - uncommented out the footer link back to mainscreen.
 - productForm.html [Lines 50-51] - amended part object to 'tempPart' for min/max inventory column
 - productForm.html [Lines 77-78] - added new lines before footer link
+- OutsourcedPartForm.html [Lines 36-37] - added two new lines before the link to mainscreen
+- InhousePartForm.html [Lines 36-37] - added two new lines before the link to mainscreen
 
 ______________________________________________
 

@@ -82,6 +82,10 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 - OutsourcedPart.java [Line 18 + 21-25] - Calls constructors of Part 
 - InhousePart.java [Line 18 + 21-25] - Calls constructors of Part + Initializes all fields, including inherited ones
 - Part.java [Lines 46-47, 50, 54-55, 58, 63-64] - amended min/maxInv fields + added min/maxInv parameters
+- mainscreen.html [Lines 41-42] - adds new column for min/max inventory
+- mainscreen.html [Lines 51-52] - displays min/max inventory
+- productForm.html [Lines 40-41] - creates headers for min/max inventory
+- productForm.html [Lines 50-51] - creates new columns for min/max inventory
 
 ______________________________________________
 

@@ -12,6 +12,8 @@ import javax.validation.ConstraintValidatorContext;
  *
  *
  */
+/* Removed unused DeletePartValidator by commenting it out:
+
 public class DeletePartValidator implements ConstraintValidator<ValidDeletePart, Part> {
     @Override
     public void initialize(ValidDeletePart constraintAnnotation) {
@@ -24,3 +26,4 @@ public class DeletePartValidator implements ConstraintValidator<ValidDeletePart,
         else return false;
     }
 }
+*/

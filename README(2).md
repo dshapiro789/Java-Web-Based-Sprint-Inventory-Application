@@ -86,7 +86,7 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 - mainscreen.html [Lines 51-52] - displays min/max inventory
 - productForm.html [Lines 40-41] - creates headers for min/max inventory
 - productForm.html [Lines 50-51] - creates new columns for min/max inventory
-- productForm.html [Lines 78] - uncommented out the footer link back to mainscreen.html
+- productForm.html [Lines 78] - uncommented out the footer link back to mainscreen.
 
 ______________________________________________
 

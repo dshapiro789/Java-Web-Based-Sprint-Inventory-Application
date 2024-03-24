@@ -105,7 +105,7 @@ ______________________________________________
 
 I.  Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
 
-- PartTest.java [Lines 160-177] - adds two new test cases for min and max inventory values
+- PartTest.java [Lines 160-177] - adds two new test cases for min/max inventory values
 
 
 ______________________________________________

@@ -47,6 +47,8 @@
         <td th:text="${tempPart.name}">1</td>
         <td th:text="${tempPart.price}">1</td>
         <td th:text="${tempPart.inv}">1</td>
+        <td th:text="${part.minInv}">Min Inv</td> <!-- New column for Min Inventory -->
+        <td th:text="${part.maxInv}">Max Inv</td> <!-- New column for Max Inventory -->
         <td><a th:href="@{/associatepart(partID=${tempPart.id})}" class="btn btn-primary btn-sm mb-3">Add</a>
         </td>
     </tr>

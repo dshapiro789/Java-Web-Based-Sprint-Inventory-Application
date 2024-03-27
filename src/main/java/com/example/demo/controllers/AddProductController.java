@@ -51,7 +51,12 @@ public class AddProductController {
     @PostMapping("/showFormAddProduct")
     public String submitForm(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, Model theModel) {
         ProductService productService = context.getBean(ProductServiceImpl.class);
-        Product existingProduct = productService.findById((int) product.getId());
+        Product existingProduct = null;
+
+        // Only try to find the existing product if the ID is not 0 (which means it's not a new product)
+        if (product.getId() != 0) {
+            existingProduct = productService.findById((int) product.getId());
+        }
 
         // Validate product inventory does not exceed max limit
         if (product.getInv() > 10000) {
@@ -65,12 +70,12 @@ public class AddProductController {
 
         // If there are errors after validations, return to the form with error messages
         if (bindingResult.hasErrors()) {
-            setupModelForForm(theModel, partService, existingProduct);
+            setupModelForForm(theModel, partService, existingProduct != null ? existingProduct : product);
             return "productForm";
         }
 
-        // Persist changes as the validations have passed
-        updateProductAndParts(product, existingProduct, productService);
+        // Persist the product with the manual inventory input
+        productService.save(product);
 
         return "confirmationaddproduct";
     }

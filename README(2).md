@@ -104,6 +104,7 @@ H.  Add validation for between or at the maximum and minimum fields. The validat
 - EnufPartsValidator.java [Lines 36-44] - Determines the potential new inventory level for the part + Adds constraint violation
 - AddProductController.java [Lines 57-66] - modified Product2 assignment + try/catch statements
 - AddProductController.java [Lines 84-100] - adds logic for inventory "too low" management
+- AddProductController.java [Lines 53-123] - Amended submitForm method to troubleshoot an inventory error I encountered when adding new products and associated parts
 
 ______________________________________________
 

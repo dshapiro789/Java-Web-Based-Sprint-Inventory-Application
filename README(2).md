@@ -119,3 +119,5 @@ J.  Remove the class files for any unused validators in order to clean your code
 - DeletePartValidator.java [Lines 15-29] - "Removes unused DeletePartValidator" by commenting it out.
 - Part.java [Line 3] - Removes unused "import com.example.demo.validators.ValidDeletePart;" by commenting it out.
 - Part.java [Line 19] - Removes unused "@ValidDeletePart" by commenting it out.
+- DeletePartValidator.java [Line 1] - Comments out remaining unused code.
+- ValidDeletePart.java [Lines 1, 3, 11-17] - Removes unused validator by commenting out the code.
